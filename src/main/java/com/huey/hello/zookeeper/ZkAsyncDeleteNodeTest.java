@@ -3,6 +3,7 @@ package com.huey.hello.zookeeper;
 import java.util.concurrent.CountDownLatch;
 
 import org.apache.zookeeper.AsyncCallback;
+import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.Watcher.Event.KeeperState;
@@ -31,7 +32,7 @@ public class ZkAsyncDeleteNodeTest {
 		zk.delete("/zk-huey-async", -1, new AsyncCallback.VoidCallback() {
 			@Override
 			public void processResult(int rc, String path, Object ctx) {
-				System.out.println("ResultCode: " + rc);
+				System.out.println("ResultCode: " + KeeperException.Code.get(rc));
 				System.out.println("Znode: " + path);
 				System.out.println("Context: " + (String) ctx);
 			}

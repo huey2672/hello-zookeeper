@@ -4,6 +4,7 @@ import java.util.concurrent.CountDownLatch;
 
 import org.apache.zookeeper.AsyncCallback;
 import org.apache.zookeeper.CreateMode;
+import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
@@ -36,7 +37,7 @@ public class ZkAsyncCreateNodeTest {
 				@Override
 				public void processResult(int rc, String path, Object ctx, String name) {
 					// 服务器响应码
-					System.out.println("ResultCode: " + rc);
+					System.out.println("ResultCode: " + KeeperException.Code.get(rc));
 					// 接口调用时传入API的数据节点的路径参数值
 					System.out.println("Znode: " + path);
 					// 接口调用时传入API的ctx参数值
