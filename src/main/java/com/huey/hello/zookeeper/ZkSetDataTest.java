@@ -10,9 +10,11 @@ import org.apache.zookeeper.data.Stat;
 
 /**
  * 以同步的方式更新节点数据
+ * 
  * @author huey
  */
 public class ZkSetDataTest {
+
 	public static void main(String[] args) throws Exception {
 		final CountDownLatch connectedSignal = new CountDownLatch(1);
 		ZooKeeper zk = new ZooKeeper("127.0.0.1:2181", 5000, new Watcher() {
@@ -25,6 +27,7 @@ public class ZkSetDataTest {
 		});
 		connectedSignal.await();
 
+		// 更新节点数据
 		Stat stat = zk.setData("/zk-huey", "hello zookeeper".getBytes(), -1);
 		System.out.println(stat);
 

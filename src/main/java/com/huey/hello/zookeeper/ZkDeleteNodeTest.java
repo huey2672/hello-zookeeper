@@ -12,6 +12,7 @@ import org.apache.zookeeper.Watcher.Event.KeeperState;
  * @author huey
  */
 public class ZkDeleteNodeTest {
+	
 	public static void main(String[] args) throws Exception {
 		final CountDownLatch connectedSignal = new CountDownLatch(1);
 		ZooKeeper zk = new ZooKeeper("127.0.0.1:2181", 5000, new Watcher() {
@@ -24,9 +25,10 @@ public class ZkDeleteNodeTest {
 		});
 		connectedSignal.await();
 		
-		// 版本指定 -1，表示客户端基于数据的最新版本操作
+		// 删除节点，版本指定 -1，表示客户端基于数据的最新版本操作
 		zk.delete("/zk-huey", -1);
 		
 		zk.close();
 	}
+	
 }

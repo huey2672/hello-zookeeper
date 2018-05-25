@@ -28,7 +28,7 @@ public class ZkAsyncDeleteNodeTest {
 		});
 		connectedSignal.await();
 
-		// 版本指定 -1，表示客户端基于数据的最新版本操作
+		// 异步删除节点，版本指定 -1，表示客户端基于数据的最新版本操作
 		zk.delete("/zk-huey-async", -1, new AsyncCallback.VoidCallback() {
 			@Override
 			public void processResult(int rc, String path, Object ctx) {

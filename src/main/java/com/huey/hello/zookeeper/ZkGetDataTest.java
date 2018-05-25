@@ -10,10 +10,11 @@ import org.apache.zookeeper.Watcher.Event.KeeperState;
 
 /**
  * 以同步的方式获取节点数据内容
+ * 
  * @author huey
  */
 public class ZkGetDataTest {
-	
+
 	public static void main(String[] args) throws Exception {
 		final CountDownLatch connectedSignal = new CountDownLatch(1);
 		ZooKeeper zk = new ZooKeeper("127.0.0.1:2181", 5000, new Watcher() {
@@ -25,12 +26,15 @@ public class ZkGetDataTest {
 			}
 		});
 		connectedSignal.await();
-		
+
+		/*
+		 * 获取节点数据
+		 */
 		Stat nodeStat = new Stat();
 		byte[] nodeData = zk.getData("/zk-huey", true, nodeStat);
 		System.out.println("Node Data: " + nodeData);
 		System.out.println("Node Stat: " + nodeStat);
-		
+
 		zk.close();
 	}
 

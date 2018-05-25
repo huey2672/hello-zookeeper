@@ -16,7 +16,6 @@ import org.apache.zookeeper.ZooDefs.Ids;
 public class ZkCreateNodeTest {
 
 	public static void main(String[] args) throws Exception {
-		
 		final CountDownLatch connectedSignal = new CountDownLatch(1);
 		ZooKeeper zk = new ZooKeeper("127.0.0.1:2181", 5000, new Watcher() {
 			@Override
@@ -28,6 +27,7 @@ public class ZkCreateNodeTest {
 		});
 		connectedSignal.await();
 		
+		// 创建节点
 		zk.create("/zk-huey", "hello".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
 
 		zk.close();

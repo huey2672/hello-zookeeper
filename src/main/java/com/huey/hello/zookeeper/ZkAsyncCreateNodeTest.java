@@ -13,9 +13,11 @@ import org.apache.zookeeper.ZooDefs.Ids;
 
 /**
  * 以同步的方式创建节点
+ * 
  * @author huey
  */
 public class ZkAsyncCreateNodeTest {
+	
 	public static void main(String[] args) throws Exception {
 		final CountDownLatch connectedSignal = new CountDownLatch(1);
 		ZooKeeper zk = new ZooKeeper("127.0.0.1:2181", 5000, new Watcher() {
@@ -28,6 +30,7 @@ public class ZkAsyncCreateNodeTest {
 		});
 		connectedSignal.await();
 		
+		// 异步创建节点
 		zk.create(
 			"/zk-huey-async", 
 			"hello".getBytes(), 
@@ -49,7 +52,8 @@ public class ZkAsyncCreateNodeTest {
 			"The Context"
 		);		
 
-		zk.close();		
+		zk.close();
 		System.in.read();
 	}
+	
 }
