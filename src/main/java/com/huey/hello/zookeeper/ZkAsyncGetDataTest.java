@@ -34,7 +34,7 @@ public class ZkAsyncGetDataTest {
 			public void processResult(int rc, String path, Object ctx, byte[] data, Stat stat) {
 				System.out.println("ResultCode: " + KeeperException.Code.get(rc));
 				System.out.println("ZNode: " + path);
-				System.out.println("Context: " + ctx);
+				System.out.println("Context: " + (String) ctx);
 				System.out.println("NodeData: " + new String(data));
 				System.out.println("Stat: " + stat);
 			}

@@ -29,6 +29,7 @@ public class ZkAsyncSetDataTest {
 		});
 		connectedSignal.await();
 		
+		// 异步更新节点数据
 		zk.setData(
 			"/zk-huey-async", 
 			"hello zookeeper".getBytes(), 
@@ -38,7 +39,7 @@ public class ZkAsyncSetDataTest {
 				public void processResult(int rc, String path, Object ctx, Stat stat) {
 					System.out.println("ResultCode: " + KeeperException.Code.get(rc));
 					System.out.println("ZNode: " + path);
-					System.out.println("Context: " + ctx);
+					System.out.println("Context: " + (String) ctx);
 					System.out.println("Stat: " + stat);
 				}
 			}, 
