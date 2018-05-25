@@ -1,19 +1,18 @@
 package com.huey.hello.zookeeper;
 
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
-import org.apache.zookeeper.ZooKeeper;
-import org.apache.zookeeper.data.Stat;
 import org.apache.zookeeper.Watcher.Event.KeeperState;
+import org.apache.zookeeper.ZooKeeper;
 
 /**
- * 以同步的方式获取节点数据内容
- * 
+ * 以同步的方式获取子节点列表
  * @author huey
  */
-public class ZkGetDataTest {
+public class ZkGetChildrenTest {
 
 	public static void main(String[] args) throws Exception {
 		final CountDownLatch connectedSignal = new CountDownLatch(1);
@@ -28,12 +27,10 @@ public class ZkGetDataTest {
 		connectedSignal.await();
 
 		/*
-		 * 获取节点数据
+		 * 获取子节点列表
 		 */
-		Stat nodeStat = new Stat();
-		byte[] nodeData = zk.getData("/zk-huey", true, nodeStat);
-		System.out.println("Node Data: " + new String(nodeData));
-		System.out.println("Node Stat: " + nodeStat);
+		List<String> children = zk.getChildren("/", true);
+		System.out.println("Children: " + children);
 
 		zk.close();
 	}
