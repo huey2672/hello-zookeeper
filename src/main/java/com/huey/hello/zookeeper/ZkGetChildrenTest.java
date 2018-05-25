@@ -10,6 +10,7 @@ import org.apache.zookeeper.ZooKeeper;
 
 /**
  * 以同步的方式获取子节点列表
+ * 
  * @author huey
  */
 public class ZkGetChildrenTest {
@@ -26,9 +27,7 @@ public class ZkGetChildrenTest {
 		});
 		connectedSignal.await();
 
-		/*
-		 * 获取子节点列表
-		 */
+		// 获取子节点列表
 		List<String> children = zk.getChildren("/", true);
 		System.out.println("Children: " + children);
 
