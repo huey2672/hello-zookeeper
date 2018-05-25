@@ -8,7 +8,7 @@ import org.apache.zookeeper.Watcher.Event.KeeperState;
 import org.apache.zookeeper.ZooKeeper;
 
 /**
- * 创建会话的示例
+ * 创建会话
  * @author huey
  */
 public class ZkConnectionTest {

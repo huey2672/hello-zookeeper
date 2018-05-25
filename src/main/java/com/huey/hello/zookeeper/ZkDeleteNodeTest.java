@@ -8,7 +8,7 @@ import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.Watcher.Event.KeeperState;
 
 /**
- * 以同步的方式删除节点的示例
+ * 以同步的方式删除节点
  * @author huey
  */
 public class ZkDeleteNodeTest {

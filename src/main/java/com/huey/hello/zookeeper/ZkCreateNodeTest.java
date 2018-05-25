@@ -10,7 +10,7 @@ import org.apache.zookeeper.Watcher.Event.KeeperState;
 import org.apache.zookeeper.ZooDefs.Ids;
 
 /**
- * 以同步的方式创建节点的示例
+ * 以同步的方式创建节点
  * @author huey
  */
 public class ZkCreateNodeTest {

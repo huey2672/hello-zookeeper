@@ -9,7 +9,7 @@ import org.apache.zookeeper.Watcher.Event.KeeperState;
 import org.apache.zookeeper.ZooKeeper;
 
 /**
- * 以异步的方式删除节点的示例
+ * 以异步的方式删除节点
  * 
  * @author huey
  */
