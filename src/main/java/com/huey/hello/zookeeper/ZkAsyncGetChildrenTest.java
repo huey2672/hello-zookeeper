@@ -30,12 +30,12 @@ public class ZkAsyncGetChildrenTest {
 		connectedSignal.await();
 
 		// 异步获取子节点列表
-		zk.getChildren("/", true, new AsyncCallback.ChildrenCallback() {
+		zk.getChildren("/", false, new AsyncCallback.ChildrenCallback() {
 			@Override
 			public void processResult(int rc, String path, Object ctx, List<String> children) {
 				System.out.println("ResultCode: " + KeeperException.Code.get(rc));
 				System.out.println("ZNode: " + path);
-				System.out.println("Context: " + ctx);
+				System.out.println("Context: " + (String) ctx);
 				System.out.println("Children: " + children);
 			}
 		}, "The Context");

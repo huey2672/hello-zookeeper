@@ -28,7 +28,7 @@ public class ZkGetChildrenTest {
 		connectedSignal.await();
 
 		// 获取子节点列表
-		List<String> children = zk.getChildren("/", true);
+		List<String> children = zk.getChildren("/", false);
 		System.out.println("Children: " + children);
 
 		zk.close();

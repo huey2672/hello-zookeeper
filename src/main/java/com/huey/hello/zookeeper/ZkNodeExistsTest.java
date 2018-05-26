@@ -2,8 +2,6 @@ package com.huey.hello.zookeeper;
 
 import java.util.concurrent.CountDownLatch;
 
-import org.apache.zookeeper.AsyncCallback;
-import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.WatchedEvent;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.Watcher.Event.KeeperState;
@@ -11,10 +9,11 @@ import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
 
 /**
- * 以异步的方式获取节点数据内容
+ * 以同步的方式检测节点是否存在
+ * 
  * @author huey
  */
-public class ZkAsyncGetDataTest {
+public class ZkNodeExistsTest {
 
 	public static void main(String[] args) throws Exception {
 		final CountDownLatch connectedSignal = new CountDownLatch(1);
@@ -27,21 +26,17 @@ public class ZkAsyncGetDataTest {
 			}
 		});
 		connectedSignal.await();
-
-		// 异步获取节点数据
-		zk.getData("/zk-huey-async", false, new AsyncCallback.DataCallback() {
-			@Override
-			public void processResult(int rc, String path, Object ctx, byte[] data, Stat stat) {
-				System.out.println("ResultCode: " + KeeperException.Code.get(rc));
-				System.out.println("ZNode: " + path);
-				System.out.println("Context: " + (String) ctx);
-				System.out.println("NodeData: " + new String(data));
-				System.out.println("Stat: " + stat);
-			}
-		}, "The Context");
-
+		
+		// 检测节点是否存在。如果节点不存在，那么返回的 Stat 实例是 null。
+		Stat stat = zk.exists("/zk-huey", false);
+		if (stat != null) {
+			System.out.println(stat);
+		} else {
+			System.out.println("The node is nonexistent");
+		}
+		
+		
 		zk.close();
-		System.in.read();
 	}
 
 }

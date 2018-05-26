@@ -31,7 +31,7 @@ public class ZkGetDataTest {
 		 * 获取节点数据
 		 */
 		Stat nodeStat = new Stat();
-		byte[] nodeData = zk.getData("/zk-huey", true, nodeStat);
+		byte[] nodeData = zk.getData("/zk-huey", false, nodeStat);
 		System.out.println("Node Data: " + new String(nodeData));
 		System.out.println("Node Stat: " + nodeStat);
 
