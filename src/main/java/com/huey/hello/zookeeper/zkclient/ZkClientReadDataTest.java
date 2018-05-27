@@ -12,7 +12,7 @@ public class ZkClientReadDataTest {
 		ZkClient zkClient = new ZkClient("127.0.0.1:2181", 5000);
 
 		// 获取节点的数据内容
-		String data = zkClient.readData("/zkclient-nonexist", true);
+		Object data = zkClient.readData("/zkclient", true);
 		if (data != null) {
 			System.out.println("Node Data: " + data);
 		} else {
