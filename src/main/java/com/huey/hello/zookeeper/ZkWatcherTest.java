@@ -33,7 +33,8 @@ public class ZkWatcherTest {
 		connectedSignal.await();
 
 		/*
-		 * 重新设置默认的监听器，构造方法的监听器仅用于响应会话连接。 需要注意的是，由于监听器的事件通知是一次性的，创建会话连接时已经触发通知，此时监听器是失效的。
+		 * 重新设置默认的监听器，构造方法的监听器仅用于响应会话连接。 
+		 * 需要注意的是，由于监听器的事件通知是一次性的，创建会话连接时已经触发通知，此时监听器是失效的。
 		 */
 		zk.register(new Watcher() {
 			@Override
@@ -66,7 +67,8 @@ public class ZkWatcherTest {
 		});
 
 		/*
-		 * 检测节点是否存在，同时注册监听器。 需要注意的是，监听器仅监听指定的节点，其他节点的操作不会触发事件通知。
+		 * 检测节点是否存在，同时注册监听器。 
+		 * 需要注意的是，监听器仅监听指定的节点，其他节点的操作不会触发事件通知。
 		 */
 		String nodePath = "/zk-huey";
 		Stat stat = zk.exists(nodePath, true);
@@ -87,6 +89,7 @@ public class ZkWatcherTest {
 		zk.create(nodePath + "/newNode", "hello".getBytes(), Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
 		zk.delete(nodePath + "/newNode", -1);
 
+		System.in.read();
 		// 触发 NodeDeleted 类型的事件通知
 		zk.delete(nodePath, -1);
 
