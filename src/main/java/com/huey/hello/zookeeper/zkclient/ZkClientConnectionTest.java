@@ -3,7 +3,7 @@ package com.huey.hello.zookeeper.zkclient;
 import org.I0Itec.zkclient.ZkClient;
 
 /**
- * 创建会话
+ * 使用 ZkClient 创建会话
  * 
  * @author huey
  */
