@@ -7,6 +7,7 @@ import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 
 /**
+ * 获取子节点列表
  * 
  * @author huey
  */
@@ -21,7 +22,7 @@ public class CarutorGetChildrenTest {
 				.build();
 		client.start();
 		
-		// 获取节点数据
+		// 获取子节点列表
 		List<String> chlidren = client.getChildren().forPath("/");
 		System.out.println("Children of '/': " + chlidren);
 		

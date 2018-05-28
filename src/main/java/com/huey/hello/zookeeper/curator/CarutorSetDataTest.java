@@ -20,7 +20,7 @@ public class CarutorSetDataTest {
 				.build();
 		client.start();
 		
-		// 获取节点数据
+		// 更新节点数据
 		client.setData().withVersion(-1).forPath("/curator", "hello curator".getBytes());
 		
 		client.close();
