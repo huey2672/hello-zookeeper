@@ -3,14 +3,13 @@ package com.huey.hello.zookeeper.curator;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
-import org.apache.zookeeper.CreateMode;
 
 /**
- * 创建节点
+ * 删除节点
  * 
  * @author huey
  */
-public class CarutorCreateNodeTest {
+public class CuratorDeleteNodeTest {
 
 	public static void main(String[] args) throws Exception {
 		CuratorFramework client = CuratorFrameworkFactory.builder()
@@ -21,11 +20,12 @@ public class CarutorCreateNodeTest {
 				.build();
 		client.start();
 		
-		// 创建节点
-		client.create()
-			.creatingParentsIfNeeded()
-			.withMode(CreateMode.PERSISTENT)
-			.forPath("/curator", "hello".getBytes());
+		// 删除节点
+		client.delete()
+			.guaranteed()
+			.deletingChildrenIfNeeded()
+			.withVersion(-1)
+			.forPath("/curator");
 		
 		client.close();
 	}

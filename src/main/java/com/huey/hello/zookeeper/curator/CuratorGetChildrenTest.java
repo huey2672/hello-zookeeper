@@ -11,7 +11,7 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
  * 
  * @author huey
  */
-public class CarutorGetChildrenTest {
+public class CuratorGetChildrenTest {
 
 	public static void main(String[] args) throws Exception {
 		CuratorFramework client = CuratorFrameworkFactory.builder()

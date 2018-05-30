@@ -10,7 +10,7 @@ import org.apache.zookeeper.data.Stat;
  * 
  * @author huey
  */
-public class CarutorCheckExistsTest {
+public class CuratorCheckExistsTest {
 
 	public static void main(String[] args) throws Exception {
 		CuratorFramework client = CuratorFrameworkFactory.builder()

@@ -3,13 +3,14 @@ package com.huey.hello.zookeeper.curator;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
 import org.apache.curator.retry.ExponentialBackoffRetry;
+import org.apache.zookeeper.data.Stat;
 
 /**
- * 更新节点数据
+ * 获取节点数据
  * 
  * @author huey
  */
-public class CarutorSetDataTest {
+public class CuratorGetDataTest {
 	
 	public static void main(String[] args) throws Exception {
 		CuratorFramework client = CuratorFrameworkFactory.builder()
@@ -20,8 +21,13 @@ public class CarutorSetDataTest {
 				.build();
 		client.start();
 		
-		// 更新节点数据
-		client.setData().withVersion(-1).forPath("/curator", "hello curator".getBytes());
+		/*
+		 * 获取节点数据
+		 */
+		Stat stat = new Stat();
+		byte[] data = client.getData().storingStatIn(stat).forPath("/curator");
+		System.out.println("Node Stat: " + stat);
+		System.out.println("Node Data: " + new String(data));
 		
 		client.close();
 	}

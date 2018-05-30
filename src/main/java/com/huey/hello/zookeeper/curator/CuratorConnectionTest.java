@@ -9,7 +9,7 @@ import org.apache.curator.retry.ExponentialBackoffRetry;
  * 
  * @author huey
  */
-public class CarutorConnectionTest {
+public class CuratorConnectionTest {
 
 	public static void main(String[] args) throws Exception {
 		// 
